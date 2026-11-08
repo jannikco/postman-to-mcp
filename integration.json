@@ -5,20 +5,91 @@
   "releaseEligible": true,
   "maintainer": "jannikco",
   "license": "MIT",
-  "sourceRevision": "57ce0fbf3c5a257a7eaa4b10844aa7be5fda4f4b447ac933d5aa3f9c0223a0a3",
+  "sourceRevision": "e4fee901db558a305991c06cb7a1bb0eb07da3594f63da62ada7d476d7213aa0",
   "evidence": [
-    "Pinned public PipMCP management OpenAPI",
-    "Offline import contract tests"
+    "Local compiler output and actual MCP tools/call contract tests"
   ],
   "provenance": [
-    "https://pipmcp.com/api/v1/openapi.json"
+    "https://github.com/jannikco/postman-to-mcp/blob/main/lib/compiler/index.mjs"
   ],
   "id": "postman-to-mcp",
   "kind": "import-example",
   "product": "pipmcp",
   "title": "Postman to MCP import starter",
-  "description": "Preview and explicitly submit a postman API import to the PipMCP managed control plane. Includes a standalone fixture and exact management request.",
+  "description": "Compile postman definitions into executable local MCP tools without a PipMCP account.",
   "operationIds": [],
   "importFormat": "postman",
-  "attributionSlug": "github-postman-to-mcp"
+  "attributionSlug": "github-postman-to-mcp",
+  "qualityVersion": 2,
+  "artifactType": "compiler",
+  "utility": {
+    "problem": "Compile postman definitions into executable local MCP tools without a PipMCP account.",
+    "output": "Executable local MCP connector definition"
+  },
+  "capabilityEvidence": {
+    "local": {
+      "level": "Tested",
+      "operations": [
+        {
+          "name": "postman-to-mcp",
+          "level": "Tested",
+          "evidenceRefs": [
+            "Standalone functional API/compiler contract tests"
+          ],
+          "method": "contract-fixture"
+        }
+      ],
+      "evidenceRefs": [
+        "Standalone functional API/compiler contract tests"
+      ],
+      "mode": "local"
+    },
+    "managed": {
+      "level": "Documented",
+      "operations": [],
+      "evidenceRefs": [],
+      "mode": "managed"
+    }
+  },
+  "connector": {
+    "id": "support-fixture-collection",
+    "name": "Support fixture collection",
+    "version": "0.2.0",
+    "baseUrl": "https://example.com",
+    "auth": {
+      "type": "none"
+    },
+    "tools": [
+      {
+        "name": "List_support_tickets",
+        "description": "List support tickets",
+        "method": "GET",
+        "path": "/support/tickets",
+        "readOnly": true,
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "default": "open"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "bindings": {
+          "path": [],
+          "query": {
+            "status": "status"
+          },
+          "body": {}
+        },
+        "sampleArguments": {}
+      }
+    ],
+    "workflow": "Call the selected operations from your own API definition using your own credentials.",
+    "provenance": [
+      "User-supplied API definition"
+    ]
+  }
 }
