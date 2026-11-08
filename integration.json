@@ -1,46 +1,49 @@
 {
   "schemaVersion": 1,
-  "status": "ready",
-  "verification": "mock-only",
-  "releaseEligible": true,
-  "maintainer": "jannikco",
-  "license": "MIT",
-  "sourceRevision": "e4fee901db558a305991c06cb7a1bb0eb07da3594f63da62ada7d476d7213aa0",
-  "evidence": [
-    "Local compiler output and actual MCP tools/call contract tests"
-  ],
-  "provenance": [
-    "https://github.com/jannikco/postman-to-mcp/blob/main/lib/compiler/index.mjs"
-  ],
   "id": "postman-to-mcp",
   "kind": "import-example",
   "product": "pipmcp",
   "title": "Postman to MCP import starter",
-  "description": "Compile postman definitions into executable local MCP tools without a PipMCP account.",
+  "description": "Import postman APIs into private PipMCP with one API key, reviewed uploads and agent instructions.",
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
   "operationIds": [],
-  "importFormat": "postman",
+  "maintainer": "jannikco",
+  "license": "MIT",
   "attributionSlug": "github-postman-to-mcp",
+  "sourceRevision": "8c049cb4f8e429cfe560eb3d2ad96ce07a1ef921d8fcc91a8bee7b59778eb06d",
   "qualityVersion": 2,
   "artifactType": "compiler",
+  "evidence": [
+    "Gateway HTTP transport fixtures",
+    "Generated stdio wrapper discovery/call fixtures"
+  ],
+  "provenance": [
+    "https://github.com/jannikco/postman-to-mcp/blob/main/lib/compiler/index.mjs"
+  ],
   "utility": {
-    "problem": "Compile postman definitions into executable local MCP tools without a PipMCP account.",
-    "output": "Executable local MCP connector definition"
+    "problem": "Import a reviewed postman API definition into private PipMCP",
+    "output": "A private integration import receipt; publication and connection remain explicit"
   },
+  "executionAuthority": "pipmcp-gateway",
+  "version": "1.0.0",
+  "agentReady": true,
   "capabilityEvidence": {
     "local": {
       "level": "Tested",
       "operations": [
         {
-          "name": "postman-to-mcp",
+          "name": "gateway_transport",
           "level": "Tested",
+          "method": "contract-fixture",
           "evidenceRefs": [
-            "Standalone functional API/compiler contract tests"
-          ],
-          "method": "contract-fixture"
+            "Generated gateway/stdio fixtures"
+          ]
         }
       ],
       "evidenceRefs": [
-        "Standalone functional API/compiler contract tests"
+        "Generated gateway/stdio fixtures"
       ],
       "mode": "local"
     },
@@ -51,45 +54,5 @@
       "mode": "managed"
     }
   },
-  "connector": {
-    "id": "support-fixture-collection",
-    "name": "Support fixture collection",
-    "version": "0.2.0",
-    "baseUrl": "https://example.com",
-    "auth": {
-      "type": "none"
-    },
-    "tools": [
-      {
-        "name": "List_support_tickets",
-        "description": "List support tickets",
-        "method": "GET",
-        "path": "/support/tickets",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "status": {
-              "type": "string",
-              "default": "open"
-            }
-          },
-          "required": [],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {
-            "status": "status"
-          },
-          "body": {}
-        },
-        "sampleArguments": {}
-      }
-    ],
-    "workflow": "Call the selected operations from your own API definition using your own credentials.",
-    "provenance": [
-      "User-supplied API definition"
-    ]
-  }
+  "importFormat": "postman"
 }

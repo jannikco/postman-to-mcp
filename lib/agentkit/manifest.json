@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "product": "pipmcp",
+  "credential": "PIPMCP_API_KEY",
+  "skills": [
+    {
+      "name": "pipmcp-postman-to-mcp",
+      "description": "Import a reviewed postman API definition into private PipMCP and connect its tools to AI agents."
+    }
+  ],
+  "files": {
+    "skills/pipmcp-postman-to-mcp/SKILL.md": "6a8a14d850dd72ad4df0b9dc0bb6a747201ee35f76f383c2abb44adcd84812e5"
+  }
+}
